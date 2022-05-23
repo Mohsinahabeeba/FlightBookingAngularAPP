@@ -1,0 +1,97 @@
+<div class="row py-5">
+    <h4  style="color:darkgray;">Hello User, where do you want to travel today?</h4>
+</div>
+<div class="container">
+    <div class="py-3">
+        <div class="row">
+            <div class="form col-md-12">
+                <div class="row">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1"  name="customRadioInline1" (change)="oneway()" checked="true" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline1"  style="color:darkgray;">One way</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="customRadioInline1" (change)="twoway()" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline2"  style="color:#a9a9a9;">Round Trip</label>
+                    </div>
+                </div>
+                <div class="row">
+                   
+                    <div class="form-group col-md-6">
+                        <label class="input-control-label" for="from">from</label>                           
+                    <select class="form-select form-control" id="from" name="from" 
+                        aria-label="Default select example" [(ngModel)]="searchInputData.fromLocation"  placeholder="From">                                
+                        <option value="DEL">Delhi(DEL)</option>
+                        <option value="BOM">Mumbai(BOM)</option>
+                        <option value="CCU">Kolkata(CCU)</option>
+                        <option value="DEL">Goa(GOI)</option>
+                        <option value="BOM">Hyderabad(HYD)</option>
+                        <option value="MAA">Chennai(MAA)</option>
+                    </select>
+                    </div>
+                    <div class="form-group col-md-6" >
+                        <label class="input-control-label" for="To">To</label>                           
+                    <select class="form-select form-control" id="To" name="To"
+                        aria-label="Default select example" [(ngModel)]="searchInputData.toLocation" placeholder="To">                                
+                        <option value="DEL">Delhi(DEL)</option>
+                        <option value="BOM">Mumbai(BOM)</option>
+                        <option value="CCU">Kolkata(CCU)</option>
+                        <option value="DEL">Goa(GOI)</option>
+                        <option value="BOM">Hyderabad(HYD)</option>
+                        <option value="MAA">Chennai(MAA)</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                      <label class="input-control-label">Onward journey</label>
+                      <input type="date" [(ngModel)]="searchInputData.departureDate" class="form-control" placeholder="Date of travel">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="input-control-label">Return journey</label>
+                    <input type="date" [(ngModel)]="searchInputData.returnDate" [disabled]="isdisabled" class="form-control" placeholder="Date of travel">
+                </div>                             
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <button type="submit" (click)="searchFlights()"  class="btn btn-success">Search Flights</button>
+        </div>
+    </div>
+</div>
+<div class="py-5">
+    <div class="row ">
+        <div class="form col-md-12">
+            <div class="form-group">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Flight No</th>
+                            <th scope="col">Flight Name</th>
+                            <th scope="col">From Location</th>
+                            <th scope="col">To Location</th>
+                            <th scope="col">Departure Date</th>
+                            <th scope="col">Arrival Date</th>
+                            <th scope="col">No Of Seats available</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="color:darkgray;" *ngFor="let obj of flightDetails">
+                            <td>{{obj.flightNo}}</td>
+                            <td>{{obj.flightName}}</td>
+                            <td>{{obj.fromLocation}}</td>
+                            <td>{{obj.toLocation}}</td>
+                            <td>{{obj.departureDateTime}}</td>
+                            <td>{{obj.arrivalDateTime}}</td>
+                            <td>{{obj.noOfSeats}}</td>
+                            <td>{{obj.price}}</td>                           
+                            <td><button type="submit" (click)="bookFlight(obj)" class="btn btn-success">Continue Booking</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

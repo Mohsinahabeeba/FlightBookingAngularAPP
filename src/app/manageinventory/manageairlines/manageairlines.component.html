@@ -1,0 +1,45 @@
+<div class="py-5">
+    <div class="row ">
+        <div class="form col-md-12">
+            <div class="form-group">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Flight No</th>
+                            <th scope="col">Flight Name</th>
+                            <th scope="col">From Location</th>
+                            <th scope="col">To Location</th>
+                            <th scope="col">Departure Date</th>
+                            <th scope="col">Arrival Date</th>
+                            <th scope="col">No Of Seats available</th>
+                            <th scope="col">Price</th>
+                             <th scope="col">Actions</th>
+                          
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let obj of AirlinesDetails" style="color:darkgray">
+                            <td>{{obj.flightNo}}</td>
+                            <td>{{obj.flightName}}</td>
+                            <td>{{obj.fromLocation}}</td>
+                            <td>{{obj.toLocation}}</td>
+                            <td>{{obj.departureDateTime}}</td>
+                            <td>{{obj.arrivalDateTime}}</td>
+                            <td>{{obj.noOfSeats}}</td>
+                            <td>{{obj.price}}</td> 
+                            <td>
+                                <span style="float: left;"><i (click)="View(obj)"
+                                        class="far fa-eye" style="color: green;cursor: pointer;"></i></span>
+                                <span style="float: right;"><i (click)="Block(obj)"
+                                        class="fas fa-bullseye" style="color: red;cursor: pointer;"></i></span>
+                                        
+                            </td>                          
+                     
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
